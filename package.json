@@ -1,0 +1,26 @@
+{
+  "name": "@naveed/cdn",
+  "version": "1.0.0",
+  "description": "A custom content delivery network",
+  "main": "dist/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nedanwr/cdn.git"
+  },
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "express",
+    "firebase",
+    "cdn"
+  ],
+  "author": "Naveed Ali Anwar <naveedalianwr@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nedanwr/cdn/issues"
+  },
+  "homepage": "https://github.com/nedanwr/cdn#readme"
+}

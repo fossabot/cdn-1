@@ -18,9 +18,11 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 // Import Index Route
-import router from "./routes/api";
+import index from "./routes/index";
+import api from "./routes/api";
 // Use Index Route
-app.use("/api", router);
+app.use("/", index);
+app.use("/api", api);
 
 // Define Port
 const port = process.env.PORT || 5500;

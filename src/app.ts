@@ -11,6 +11,12 @@ if (!__prod__) {
     app.use(logger("dev"));
 }
 
+// Body Parser
+app.use(express.urlencoded({
+    extended: true,
+}));
+app.use(express.json());
+
 // Import Index Route
 import router from "./routes/index";
 // Use Index Route

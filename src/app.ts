@@ -18,7 +18,7 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 // Import Index Route
-import router from "./routes/index";
+import router from "./routes/api";
 // Use Index Route
 app.use("/api", router);
 

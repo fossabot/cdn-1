@@ -21,7 +21,7 @@ router.post("/shorten", async (req: Request, res: Response) => {
     // Check long URL
     if (isUri(longUrl)) {
         try {
-            const urlsRef = firestore.collection("urls").doc();
+            const urlsRef = firestore.collection("urls").doc(urlCode);
 
             await urlsRef.set({
                 shortCode: urlCode,

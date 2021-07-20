@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express, { Application } from "express";
 import logger from "morgan";
 import { __prod__ } from "./lib/constants";

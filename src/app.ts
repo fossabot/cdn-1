@@ -11,6 +11,11 @@ if (!__prod__) {
     app.use(logger("dev"));
 }
 
+// Import Index Route
+import router from "./routes/index";
+// Use Index Route
+app.use("/api", router);
+
 // Define Port
 const port = process.env.PORT || 5500;
 

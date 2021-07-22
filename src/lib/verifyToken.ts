@@ -7,10 +7,8 @@ function verifyToken(req:any, res:Response, next:NextFunction) {
     if (typeof bearerHeader !== "undefined") {
         // Split at space
         const bearer = bearerHeader.split(" ");
-        // Get token from array
-        const bearerToken = bearer[1];
-        // Set the token
-        req.token = bearerToken;
+        // Get & set the token from array
+        req.token = bearer[1];
         // Next middleware
         next();
     }

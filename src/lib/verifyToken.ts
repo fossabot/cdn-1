@@ -1,6 +1,6 @@
-import { Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from "express";
 
-function verifyToken(req:any, res:Response, next:NextFunction) {
+function verifyToken(req:Request, res:Response, next:NextFunction) {
     // Get auth header value
     const bearerHeader = req.headers['authorization'];
     // Check if bearer is undefined

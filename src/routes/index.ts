@@ -10,7 +10,7 @@ router.get("/:code", async (req:Request, res:Response) => {
     try {
         const urlsRef = await firestore.collection("urls").doc(urlCode).get();
         if (urlsRef.data()) {
-            res.redirect(urlsRef.data()!.longUrl);
+            res.redirect(urlsRef.data()?.longUrl);
         }
         else {
             res.status(404).json("Could Not Find Code");

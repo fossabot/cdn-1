@@ -1,27 +1,27 @@
-import { Router, Response } from "express";
+import { Router, Request, Response } from "express";
 import verifyToken from "../lib/verifyToken";
 import { v4 as uuid } from "uuid";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload, VerifyErrors } from "jsonwebtoken";
 import { jwtSecret } from "../lib/constants";
 import { firestore } from "../lib/database";
 const router = Router();
 
 // @route       POST /api/user/create
 // @desc        Create new user & assign a json web token
-router.post("/create", verifyToken, (req:any, res:Response) => {
+router.post("/create", verifyToken, (req:Request, res:Response) => {
     // Verify token stored in req.token
-    jwt.verify(req.token, jwtSecret, async (err:any, authData:any) => {
+    jwt.verify(req.token, jwtSecret, async (err:VerifyErrors|null, authData:JwtPayload|undefined) => {
         // Send 403 if any error verifying token or if user is not authorized to access resource
         if (err) {
             res.sendStatus(403);
        }
        else {
-            firestore.collection("users").doc(authData.uid).get().then(async user => {
+            firestore.collection("users").doc(authData?.uid).get().then(async user => {
                 if (!user.data()?.administrator) {
                     return res.sendStatus(403);
                 }
                 // Get user email value from body
-                const {email} = req.body;
+                const { email } = req.body;
                 // Generate new uuid
                 const uid = uuid();
                 // JWT Payload

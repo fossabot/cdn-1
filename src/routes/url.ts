@@ -1,6 +1,6 @@
-import { Router, Response } from "express";
+import { Router, Response, Request } from "express";
 import verifyToken from "../lib/verifyToken";
-import jwt from "jsonwebtoken";
+import jwt, { VerifyErrors } from "jsonwebtoken";
 import { jwtSecret } from "../lib/constants";
 import { isUri } from "valid-url";
 import { baseURL } from "../lib/constants";
@@ -10,9 +10,9 @@ const router = Router();
 
 // @route       /api/url/shorten
 // @desc        Shorten URL
-router.post("/shorten", verifyToken, async (req:any, res: Response) => {
+router.post("/shorten", verifyToken, async (req:Request, res: Response) => {
     // Verify token stored in req.token
-    jwt.verify(req.token, jwtSecret, async (err: any) => {
+    jwt.verify(req.token, jwtSecret, async (err:VerifyErrors|null) => {
         // Send 403 if any error verifying token or if user is not authorized to access resource
         if (err) {
             res.sendStatus(403);

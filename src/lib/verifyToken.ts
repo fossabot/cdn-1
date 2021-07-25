@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 
-function verifyToken(req:Request, res:Response, next:NextFunction) {
+function verifyToken(req:Request, res:Response, next:NextFunction) { // eslint-disable-line @typescript-eslint/explicit-module-boundary-types
     // Get auth header value
-    const bearerHeader = req.headers['authorization'];
+    const bearerHeader:string|undefined = req.headers['authorization'];
     // Check if bearer is undefined
     if (typeof bearerHeader !== "undefined") {
         // Split at space
